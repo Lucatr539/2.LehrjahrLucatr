@@ -13,15 +13,27 @@ int main(void)
 {
     DDRA = 0xFF;
     DDRB = 0xFF;
-    
+    PORTA = 0x0A;
     
     
     /* Replace with your application code */
-    while (1) 
-    {
-        _delay_ms(500);
-        PORTA = ~PORTA;
-        _delay_ms(500);
-    }
+    
+      
+      while (1)
+      
+      {
+          if (!PORTA)
+         
+          {
+              PORTA = 10;
+          }
+          else
+          {
+              PORTA--;
+          }
+          _delay_ms(1000);    
+      }
+        
+    
 }
 
