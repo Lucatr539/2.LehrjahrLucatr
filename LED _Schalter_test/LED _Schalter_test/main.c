@@ -10,6 +10,15 @@
 
 int main(void)
 {
+    DDRA = 0xFF; //LEDs initialisieren
+    DDRB = 0xFF;
+    
+    PORTB = 0;
+    
+    
+    
+    PORTA = 10 + 10;
+   
     /* Replace with your application code */
     while (1) 
     {
