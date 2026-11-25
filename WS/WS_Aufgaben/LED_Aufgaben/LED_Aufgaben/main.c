@@ -16,22 +16,33 @@ int main(void)
 {
     DDRA = 0xFF;
     DDRB = 0xFF;
-    PORTA= 10;
+    PORTA= 8;
     /* Replace with your application code */
     while (1) 
     {
-      PORTB = 0xFF;
-      _delay_ms(500);
-      PORTB = 0;
-      _delay_ms(500);
+        
+        if (PORTB >= 1)
+        {
+            PORTB = PORTB>>1 ;
+        } 
+        else
+        {
+            PORTB = 0xFF;
+        }
+      
+      
+     
       if (!PORTA)
          
           {
-              PORTA = 10;
+              _delay_ms(1000);
+              PORTA = 8;
           }
           else
           {
-              PORTA--;
+              _delay_ms(1000);
+              PORTA --;
+             
           }
               
         
