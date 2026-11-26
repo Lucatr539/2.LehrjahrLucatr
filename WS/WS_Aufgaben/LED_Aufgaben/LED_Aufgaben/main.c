@@ -19,24 +19,22 @@ int main(void)
      
      while (1)
      {
+        
+         
          for (int8_t i = 8; i > 0; i--)
          {
              PORTA = i;
              
-             PORTB = (1<<i)-1 ;
+             for (uint8_t t = 0; t < 100; t++)   
+             {
+                 PORTB = ~PORTB;                 
+                 _delay_ms(10);                  
+             }
              
-             
-             _delay_ms(1000);
          }
          
-         for (int8_t i = 0; i < 8; i++)
-         {
-             PORTA = i;
-             
-             PORTB = (1<<i)-1 ;
-             
-             _delay_ms(1000);
-         }
+         
+         
      }
   
     
