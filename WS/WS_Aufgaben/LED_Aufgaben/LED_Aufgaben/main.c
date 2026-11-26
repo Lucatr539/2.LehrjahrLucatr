@@ -14,42 +14,31 @@
 
 int main(void)
 {
-    DDRA = 0xFF;
-    DDRB = 0xFF;
-    PORTA= 8;
-    /* Replace with your application code */
-    while (1) 
-    {
-        
-        if (PORTB >= 1)
-        {
-            PORTB = PORTB>>1 ;
-        } 
-        else
-        {
-            PORTB = 0xFF;
-        }
-      
-      
+     DDRA |= 0xFF;
+     DDRB |= 0xFF;
      
-      if (!PORTA)
-         
-          {
-              _delay_ms(1000);
-              PORTA = 8;
-          }
-          else
-          {
-              _delay_ms(1000);
-              PORTA --;
+     while (1)
+     {
+         for (int8_t i = 8; i > 0; i--)
+         {
+             PORTA = i;
              
-          }
-              
-        
-        
-        
-    }
-   
+             PORTB = (1<<i)-1 ;
+             
+             
+             _delay_ms(1000);
+         }
+         
+         for (int8_t i = 0; i < 8; i++)
+         {
+             PORTA = i;
+             
+             PORTB = (1<<i)-1 ;
+             
+             _delay_ms(1000);
+         }
+     }
+  
     
 }
 
