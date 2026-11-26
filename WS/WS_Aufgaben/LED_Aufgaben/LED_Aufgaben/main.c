@@ -16,22 +16,36 @@ int main(void)
 {
      DDRA |= 0xFF;
      DDRB |= 0xFF;
+     PORTB = 0x00;
+     
+     int8_t i = 8;
+     uint8_t runter = 1;
      
      while (1)
      {
-        
+        PORTA = (PORTA & 0xC0) | i;
          
-         for (int8_t i = 8; i > 0; i--)
-         {
-             PORTA = i;
              
              for (uint8_t t = 0; t < 100; t++)   
              {
-                 PORTB = ~PORTB;                 
+                 PORTA ^= 0xC0;
+                                 
                  _delay_ms(10);                  
              }
              
-         }
+             if (runter)
+             {
+                 i--;
+                 if (i == 0) runter = 0;
+             }
+             else
+             {
+                 i++;
+                 if (i == 8) runter = 1;
+                 
+             }
+             
+         
          
          
          
